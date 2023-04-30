@@ -1,0 +1,131 @@
+*{
+margin: 0px;
+padding:0px;
+font-family: monospace;
+background-color: #dde1e7;
+}
+
+.main-cont{
+  display:grid;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height:100vh;
+  margin:20px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"]{
+  appearance: none;
+  width: 45px;
+  height: 25px;
+  border-radius: 13px;
+  background-color: #ff0d0d80;
+  box-shadow: 5px 5px 8px #00000020,
+  -5px -5px 8px #ffffff70,
+  inset 5px 5px 8px #00000030,
+  inset -5px -5px 8px #ffffff30;
+  border: 3px solid #dde1e7;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding:6px;
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:after{
+  content: "";
+  width: 15px;
+  height:15px;
+  border-radius: 50px;
+  background-color: #dde1e7;
+  box-shadow: 2px 2px 4px #00000020,
+  -2px -2px 4px #ffffff60;
+  transition: 0.3s;
+
+}
+
+input[type="checkbox"]:checked:after{
+  content: "";
+  transform: translateX(100%);
+}
+
+input[type="checkbox"]:checked{
+  background-color: #adff2f80;
+}
+
+input[type="checkbox"]:checked ~ .submit{
+  background-color: #adff60;
+}
+
+input[type="checkbox"]:checked ~ .submit:active{
+  box-shadow: 5px 5px 8px #00000020,
+  -5px -5px 8px #ffffff70,
+  inset 5px 5px 8px #00000020,
+  inset -5px -5px 8px #96dd2d70;
+  border: 2px solid #96dd2d70;
+}
+
+form{
+  display:grid;
+  grid-template-rows: repeat(auto-fit,1fr);
+  gap:15px;
+}
+
+.inp{
+  box-sizing: border-box;
+  width:400px;
+  height:30px;
+  background-color: #dde1e7;
+  outline: none;
+  border: none;
+  padding:20px 20px;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  box-shadow: 5px 5px 8px #00000020,
+             -5px -5px 8px #ffffff70;
+}
+
+@media screen and (width<480px) {
+  .inp{
+    width:auto;
+  }
+}
+
+.inp:focus{
+  box-shadow: 5px 5px 8px #00000020,
+  -5px -5px 8px #ffffff70,
+  inset 5px 5px 8px #00000020,
+  inset -5px -5px 8px #ffffff70;
+  border: 2px solid #dde1e7;
+}
+
+.form-cont{
+  border: 3px solid #14144fd3;
+  padding:30px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.label-text{
+  font-size: 20px;
+}
+
+.submit{
+  width:150px;
+  height:auto;
+  padding:8px;
+  transition: background-color 0.3s;
+  background-color: #ff0d0d99;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.35rem;
+  box-shadow: 5px 5px 8px #00000020,
+             -5px -5px 8px #ffffff70;
+}
+
+.msg{
+  color:crimson;
+  font-size: 16px;
+}

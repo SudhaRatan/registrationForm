@@ -10,14 +10,14 @@ document.getElementById("password").addEventListener("input", function (e) {
   password = e.target.value
   flag = true
   checkPasswords()
-  showErrorMsg(e.target.id,e.target.value)
+  showErrorMsg(e.target.id, e.target.value)
 })
 
-document.getElementById("terms").addEventListener("click",function(e){
-  if(e.target.checked){
+document.getElementById("terms").addEventListener("click", function (e) {
+  if (e.target.checked) {
     termsFlag = true
     document.getElementById("terms-label").style.color = "black"
-  }else{
+  } else {
     termsFlag = false
   }
 })
@@ -26,31 +26,31 @@ document.getElementById("con-password").addEventListener("input", function (e) {
   password1 = e.target.value
   flag = true
   checkPasswords()
-  showErrorMsg(e.target.id,e.target.value)
+  showErrorMsg(e.target.id, e.target.value)
 })
 
 document.getElementById("email").addEventListener("input", function (e) {
   email = e.target.value
   flag = true
-  showErrorMsg(e.target.id,e.target.value)
+  showErrorMsg(e.target.id, e.target.value)
 })
 
 document.getElementById("username").addEventListener("input", function (e) {
   username = e.target.value
   flag = true
-  showErrorMsg(e.target.id,e.target.value)
+  showErrorMsg(e.target.id, e.target.value)
 })
 
 const onSubmit = (e) => {
   e.preventDefault()
   if (username && email && password && password1) {
-    if(flag && passflag && termsFlag){
+    if (flag && passflag && termsFlag) {
       console.log("sub")
-      alert("Registered")
-    }else{
-      if(!termsFlag){
+      showLoading()
+    } else {
+      if (!termsFlag) {
         document.getElementById("terms-label").style.color = "crimson"
-      }else{
+      } else {
         document.getElementById("terms-label").style.color = "black"
       }
       console.log("not")
@@ -59,8 +59,8 @@ const onSubmit = (e) => {
     var inputs = document.querySelectorAll(".inp")
     var errInputs = []
     inputs.forEach(elem => {
-      if(!elem.value){
-        showErrorMsg(elem.id,elem.value)
+      if (!elem.value) {
+        showErrorMsg(elem.id, elem.value)
         flag = false
       }
     });
@@ -79,11 +79,29 @@ const checkPasswords = () => {
   }
 }
 
-const showErrorMsg = (elemId,elemVal) => {
+const showErrorMsg = (elemId, elemVal) => {
   var id = elemId + "-label"
   if (!elemVal) {
     document.getElementById(id).style.color = "crimson"
   } else {
     document.getElementById(id).style.color = "black"
   }
+}
+
+const showLoading = () => {
+  fetch("./views/loading.html")
+    .then(res => {
+      // console.log(res.text())
+      return res.text()
+    })
+    .then(htmlSnippet => {
+      document.getElementById("loading").innerHTML = htmlSnippet
+      return 0
+    })
+    .then(() => {
+      setTimeout(() => {
+        document.getElementById("loading").innerHTML = ""
+        alert("Registered")
+      }, 2000)
+    })
 }
